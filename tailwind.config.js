@@ -14,6 +14,7 @@ module.exports = {
         secondary: "#3D0000",
         tenary: "#950101",
         touch: "#FF0000",
+        fade: "#00000099",
       },
       container: {
         padding: {
