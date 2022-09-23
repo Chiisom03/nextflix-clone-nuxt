@@ -1,9 +1,13 @@
 <template>
-  <div></div>
+  <div>
+    <Hero />
+  </div>
 </template>
 
 <script>
+import Hero from "../components/Hero.vue";
 export default {
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+  components: { Hero },
+};
 </script>
