@@ -10,10 +10,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#100720",
-        secondary: "#31087B",
-        tenary: "#FA2FB5",
-        touch: "#FFC23C",
+        primary: "#000000",
+        secondary: "#3D0000",
+        tenary: "#950101",
+        touch: "#FF0000",
       },
       container: {
         padding: {
