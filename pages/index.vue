@@ -22,7 +22,7 @@
         v-model="searchInput"
       />
       <button
-        @click="searchInput == ''"
+        @click="clearSearch"
         class="btn text-white"
         v-show="searchInput !== ''"
       >
@@ -201,18 +201,11 @@ export default {
   },
 
   async fetch() {
-    // this.searchInput !== ""
-    //   ? await this.searchedMovies()
-    //   : await this.getMovies();
-    // return;
-
     if (this.searchInput === "") {
       await this.getMovies();
       return;
     }
-    if (this.searchInput !== "") {
-      await this.searchMovies();
-    }
+    return await this.searchMovies();
   },
   methods: {
     async getMovies() {
@@ -239,10 +232,10 @@ export default {
       this.searchMovies = [];
     },
   },
-  // watch: {
-  //   searchInput() {
-  //     console.log(this.searchInput);
-  //   },
-  // },
+  watch: {
+    searchInput() {
+      console.log(this.searchInput);
+    },
+  },
 };
 </script>
