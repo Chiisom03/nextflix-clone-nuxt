@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
+
+*{
+  font-family: 'DM Serif Display';
+}
+
 .hero{
   &::after {
     content: '';
