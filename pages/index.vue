@@ -233,11 +233,16 @@ export default {
         this.searchedMovies.push(movie);
       });
     },
-    // watch: {
-    //   searchInput() {
-    //     console.log(this.searchInput);
-    //   },
-    // },
+
+    clearSearch() {
+      this.searchInput = "";
+      this.searchMovies = [];
+    },
   },
+  // watch: {
+  //   searchInput() {
+  //     console.log(this.searchInput);
+  //   },
+  // },
 };
 </script>
