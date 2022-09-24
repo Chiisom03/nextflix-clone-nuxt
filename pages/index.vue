@@ -3,12 +3,31 @@
     <Hero />
 
     <div class="flex py-8 px-4">
-      <input class="max-w-[350px]"
+      <input
+        @keyup.enter="$fetch"
+        class="
+          max-w-[350px]
+          w-full
+          py-3
+          px-2
+          text-sm
+          focus:ring-touch
+          outline-2
+          focus:outline-dashed
+          outline-touch
+          mr-2
+        "
         type="text"
         placeholder="search movies"
         v-model="searchInput"
       />
-      <button v-show="searchInput != ''">clear search</button>
+      <button
+        @click="searchInput == ''"
+        class="btn text-white"
+        v-show="searchInput !== ''"
+      >
+        clear search
+      </button>
     </div>
 
     <!-- Movies -->
@@ -48,13 +67,13 @@
                 leading-normal
                 absolute
                 bottom-0
-                bg-fade
+                bg-touch
                 p-3
                 transform
-                opacity-0
+                translate-y-full
                 transition-all
                 ease-in-out
-                group-hover:opacity-100
+                group-hover:opacity-100 group-hover:translate-y-0
               "
             >
               {{ movie.overview }}
@@ -99,20 +118,41 @@ export default {
   data() {
     return {
       movies: [],
+      searchMovies: [],
+      searchInput: "",
     };
   },
+
   async fetch() {
-    await this.getMovies();
+    this.searchInput !== ""
+      ? await this.searchedMovies()
+      : await this.getMovies();
+    return;
   },
   methods: {
     async getMovies() {
       const data = axios.get(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=1"
+        "https://api.themoviedb.org/3/movie/now_playing?api_key=c3e3b715db7ed78cea000e0969eda5d5&language=en-US&page=1"
       );
       const result = await data;
       result.data.results.forEach((movie) => {
         this.movies.push(movie);
       });
+    },
+    async searchedMovies() {
+      const data = axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=c3e3b715db7ed78cea000e0969eda5d5&language=en-US&page=1&query=${this.searchInput}`
+      );
+      const result = await data;
+      result.data.results.forEach((movie) => {
+        this.searchMovies.push(movie);
+        return;
+      });
+    },
+    watch: {
+      searchInput() {
+        console.log(this.searchInput);
+      },
     },
   },
 };

@@ -4,18 +4,6 @@
   font-family: 'DM Serif Display';
 }
 
-.hero{
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-}
-
 .btn{
   display: inline-block;
   text-decoration: none;
@@ -24,7 +12,6 @@
   background-color: #c92502;
   border: none;
   color: #fff;
-  border-radius: 4px;
   cursor: pointer;
   transition: 0.3s ease all;
 }
