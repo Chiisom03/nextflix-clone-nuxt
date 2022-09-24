@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <main class="selection:bg-red-600">
+    <!-- Hero section -->
     <Hero />
 
+    <!-- Search section -->
     <div class="flex py-8 px-4">
       <input
         @keyup.enter="$fetch"
@@ -30,8 +32,11 @@
       </button>
     </div>
 
+    <!-- Loading -->
+    <Loading v-if="$fetchState.pending" />
+
     <!-- Movies -->
-    <div class="py-8 px-4">
+    <div v-else class="py-8 px-4">
       <!-- search result -->
       <div
         v-if="searchInput !== ''"
@@ -183,7 +188,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -213,9 +218,11 @@ export default {
         "https://api.themoviedb.org/3/movie/now_playing?api_key=c3e3b715db7ed78cea000e0969eda5d5&language=en-US&page=1"
       );
       const result = await data;
+     setTimeout(() => {
       result.data.results.forEach((movie) => {
         this.movies.push(movie);
       });
+     }, 2000);
     },
     async searchMovies() {
       const data = axios.get(

@@ -25,6 +25,14 @@ module.exports = {
           "2xl": "8rem",
         },
       },
+      keyframes: {
+        loading: {
+          "to": { transform: "rotateZ(360deg)" },
+        },
+        animation: {
+          loading: "loading 1s ease-in-out infinite",
+        },
+      },
     },
   },
   variants: {
