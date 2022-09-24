@@ -15,7 +15,6 @@ module.exports = {
         tenary: "#950101",
         touch: "#FF0000",
         fade: "#00000099",
-
       },
       container: {
         padding: {

@@ -2,6 +2,16 @@
   <div>
     <Hero />
 
+    <div class="flex py-8 px-4">
+      <input class="max-w-[350px]"
+        type="text"
+        placeholder="search movies"
+        v-model="searchInput"
+      />
+      <button v-show="searchInput != ''">clear search</button>
+    </div>
+
+    <!-- Movies -->
     <div class="py-8 px-4">
       <div
         id="movie-grid"
@@ -12,14 +22,7 @@
           v-for="(movie, idx) in movies"
           :key="idx"
         >
-          <div
-            class="
-              relative
-              overflow-hidden
-              hover:transform hover:translate-y-0
-              text-white
-            "
-          >
+          <div class="relative overflow-hidden text-white group">
             <img
               :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
               class="block h-full w-full"
@@ -48,19 +51,21 @@
                 bg-fade
                 p-3
                 transform
-                translate-y-full
+                opacity-0
                 transition-all
+                ease-in-out
+                group-hover:opacity-100
               "
             >
               {{ movie.overview }}
             </p>
           </div>
-          <div class="">
-            <p class="text-white">
+          <div class="mt-auto">
+            <p class="text-white mt-2 text-sm">
               {{ movie.title.slice(0, 25) }}
               <span v-if="movie.title.length > 25">...</span>
             </p>
-            <p class="release">
+            <p class="my-2 text-white">
               Released:
               {{
                 new Date(movie.release_date).toLocaleDateString("en-us", {
