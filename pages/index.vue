@@ -6,7 +6,7 @@
     <!-- Search section -->
     <div class="flex py-8 px-4">
       <input
-        @keyup.enter="$fetch"
+        @keyup="$fetch"
         class="
           max-w-[350px]
           w-full
@@ -43,6 +43,7 @@
         id="movie-grid"
         class="grid gap-x-8 gap-y-16 grid-cols-1 md:grid-cols-3 lg:grid-cols-4"
       >
+        <!-- Searched Movies -->
         <div
           class="relative flex flex-col"
           v-for="(movie, idx) in searchedMovies"
@@ -113,6 +114,7 @@
         </div>
       </div>
 
+      <!-- Current Movies -->
       <div
         v-else
         id="movie-grid"
@@ -178,10 +180,7 @@
             </p>
             <NuxtLink
               class="btn"
-              :to="{
-                name: 'movies-movieID',
-                params: { movieID: movies.id },
-              }"
+              :to="`/movie/:${movie.id}`"
               >Get More Info</NuxtLink
             >
           </div>
@@ -204,7 +203,9 @@ export default {
       searchInput: "",
     };
   },
-
+  mounted() {
+    this.$fetch();
+  },
   async fetch() {
     if (this.searchInput === "") {
       await this.getMovies();
@@ -212,21 +213,26 @@ export default {
     }
     return await this.searchMovies();
   },
+  fetchDelay: 3000,
+
   methods: {
+    // makeAsync(timeout) {
+    //   return new Promise((resolve) => setTimeout(resolve, timeout));
+    // },
     async getMovies() {
+      const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
       const data = axios.get(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=c3e3b715db7ed78cea000e0969eda5d5&language=en-US&page=1"
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
       );
       const result = await data;
-     setTimeout(() => {
       result.data.results.forEach((movie) => {
         this.movies.push(movie);
       });
-     }, 2000);
     },
     async searchMovies() {
+      const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
       const data = axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=c3e3b715db7ed78cea000e0969eda5d5&language=en-US&page=1&query=${this.searchInput}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&query=${this.searchInput}`
       );
       const result = await data;
       result.data.results.forEach((movie) => {

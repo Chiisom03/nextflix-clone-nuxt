@@ -43,7 +43,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .hero{
-//   color: #00000099;
-// }
 </style>
