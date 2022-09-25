@@ -214,7 +214,7 @@ export default {
       await this.getMovies();
       return;
     }
-    return await this.searchMovies();
+    return this.searchMovies();
   },
   fetchDelay: 3000,
 

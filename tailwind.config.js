@@ -17,22 +17,15 @@ module.exports = {
         fade: "#00000099",
       },
       container: {
-        padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "5rem",
-          xl: "6rem",
-          "2xl": "8rem",
-        },
+        // padding: {
+        //   DEFAULT: "1rem",
+        //   sm: "2rem",
+        //   lg: "5rem",
+        //   xl: "6rem",
+        //   "2xl": "8rem",
+        // },
       },
-      keyframes: {
-        loading: {
-          "to": { transform: "rotateZ(360deg)" },
-        },
-        animation: {
-          loading: "loading 1s ease-in-out infinite",
-        },
-      },
+     
     },
   },
   variants: {
