@@ -24,7 +24,7 @@ export default {
   methods: {
     async getSingleMovie() {
       const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
-      const url = `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${apiKey}&language=en-US`;
+      const url = `https://api.themoviedb.org/3/movie/${this.$route.params.movieid}?api_key=${apiKey}&language=en-US`;
       console.log(this.$route.params);
       axios
         .get(
