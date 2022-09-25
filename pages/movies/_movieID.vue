@@ -1,5 +1,6 @@
 <template>
-  <div class="c"></div>
+  <Loading v-if="fetchState.pending" />
+  <div v-else class="c"></div>
 </template>
 
 <script>
@@ -12,6 +13,11 @@ export default {
       movie: null,
     };
   },
+  
+  async fetch(){
+    await this.getSingleMovie()
+  },
+  fetchDelay: 3000,
   methods: {
     async getSingleMovie() {
       const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";

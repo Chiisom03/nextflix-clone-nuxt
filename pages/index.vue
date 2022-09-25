@@ -216,9 +216,6 @@ export default {
   fetchDelay: 3000,
 
   methods: {
-    // makeAsync(timeout) {
-    //   return new Promise((resolve) => setTimeout(resolve, timeout));
-    // },
     async getMovies() {
       const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
       const data = axios.get(
