@@ -105,8 +105,8 @@
             <NuxtLink
               class="btn"
               :to="{
-                name: 'movies-movieID',
-                params: { movieID: movies.id },
+                path: 'movies',
+                params: { id: movies.id },
               }"
               >Get More Info</NuxtLink
             >
@@ -183,7 +183,7 @@
             >
             <NuxtLink
               class="btn"
-              :to="{ name: `movies-movieID`, params: { movieID: movie.id } }"
+              :to="{ name: `movies-movieid`, params: { movieid: movie.id } }"
               >avadore</NuxtLink
             >
           </div>
