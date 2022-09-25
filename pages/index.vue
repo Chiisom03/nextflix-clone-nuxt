@@ -178,11 +178,11 @@
                 })
               }}
             </p>
-            <NuxtLink
+            <!-- <NuxtLink
               class="btn"
               :to="`/movie/:${movie.id}`"
               >Get More Info</NuxtLink
-            >
+            > -->
           </div>
         </div>
       </div>
