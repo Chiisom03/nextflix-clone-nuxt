@@ -178,10 +178,13 @@
                 })
               }}
             </p>
+            <NuxtLink class="btn" :to="`/movie-query?movieid=${movie.id}`"
+              >Get More Info</NuxtLink
+            >
             <NuxtLink
               class="btn"
-              :to="`/movie/:${movie.id}`"
-              >Get More Info</NuxtLink
+              :to="{ name: `movies-movieID`, params: { movieID: movie.id } }"
+              >avadore</NuxtLink
             >
           </div>
         </div>

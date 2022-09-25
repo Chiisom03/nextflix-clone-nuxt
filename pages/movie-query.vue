@@ -1,6 +1,7 @@
 <template>
-  <Loading v-if="fetchState.pending" />
-  <div v-else class="c"></div>
+  <div class="text-white">
+    {{ movie.title }}
+  </div>
 </template>
 
 <script>
@@ -10,7 +11,7 @@ export default {
   name: "single-movie",
   data() {
     return {
-      movie: null,
+      movie: {},
     };
   },
 
@@ -21,12 +22,13 @@ export default {
   methods: {
     async getSingleMovie() {
       const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
+      const url = `https://api.themoviedb.org/3/movie/${this.$route.query.movieid}?api_key=${apiKey}&language=en-US`;
+      console.log(url);
       axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${apiKey}&language=en-US`
-        )
-        .then((result) => {
-          this.movie = result.data;
+        .get(url)
+        .then(({ data }) => {
+          this.movie = data;
+          alert(this.movie.title);
         })
         .catch((error) => {
           alert(error);
