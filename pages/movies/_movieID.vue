@@ -23,7 +23,7 @@ export default {
       const apiKey = "c3e3b715db7ed78cea000e0969eda5d5";
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${apiKey}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${this.$route.params.movieID}?api_key=${apiKey}&language=en-US`
         )
         .then((result) => {
           this.movie = result.data;
